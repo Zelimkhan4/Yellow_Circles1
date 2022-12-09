@@ -2,14 +2,14 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtGui import QPainter, QBrush, QColor
 from PyQt5.QtCore import Qt, QPoint
 from random import randint
-from PyQt5 import uic
+from UI import Ui_MainWindow
 import sys
 
 
-class Window(QMainWindow):
+class Window(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi("UI.ui", self)
+        self.setupUi(self)
         self.balls = [] # (x, y, r, color)
         self.btn.clicked.connect(self.process)
 
