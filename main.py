@@ -16,14 +16,15 @@ class Window(QMainWindow):
     def process(self):
         r = randint(0, 100)
         x, y = randint(r, self.width() - r), randint(r, self.height() - r)
-        self.balls.append((x, y, r))
+        color = QColor(randint(0, 255), randint(0, 255), randint(0, 255))
+        self.balls.append((x, y, r, color))
         self.update()
 
     def paintEvent(self, a0):
         painter = QPainter(self)
-        painter.setBrush(QBrush(Qt.yellow))
         for ball in self.balls: # ball - (pos, r)
-            x, y, r = ball
+            x, y, r, color = ball
+            painter.setBrush(QBrush(color))
             painter.drawEllipse(QPoint(x, y), r, r)
 
 
