@@ -20,8 +20,11 @@ class Window(QMainWindow):
         self.update()
 
     def paintEvent(self, a0):
+        painter = QPainter(self)
+        painter.setBrush(QBrush(Qt.yellow))
         for ball in self.balls: # ball - (pos, r)
             x, y, r = ball
+            painter.drawEllipse(QPoint(x, y), r, r)
 
 
 if __name__ == "__main__":
